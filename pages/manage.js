@@ -1,6 +1,9 @@
+import MainLayout from '../layouts/MainLayout';
 const ManagePage = () => {
     return (
-        <div>Mange</div>
+        <MainLayout>
+            <div>Mange</div>
+        </MainLayout>
     )
 }
 
