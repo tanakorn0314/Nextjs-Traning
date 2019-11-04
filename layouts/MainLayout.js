@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import globalStyle from '../style';
 
 const MainLayout = props => {
     return (
@@ -30,22 +31,6 @@ const MainLayout = props => {
             <div className='content'>
                 {props.children}
             </div>
-            <style jsx global>{`
-                @font-face {
-                    font-family: Roboto;
-                    src: url(/static/fonts/Roboto-Regular.ttf);
-                    font-weight: 400;
-                }
-                @font-face {
-                    font-family: Roboto;
-                    src: url(/static/fonts/Roboto-Light.ttf);
-                    font-weight: 200;
-                }
-                body {
-                    margin: 0;
-                    font-family: 'Roboto';
-                }
-            `}</style>
             <style jsx>{`
                 .topbar {
                     display: flex;
@@ -70,6 +55,7 @@ const MainLayout = props => {
                     flex-direction: column;
                 }
             `}</style>
+            <style jsx global>{globalStyle}</style>
         </div>
     )
 }

@@ -1,17 +1,14 @@
 import MainLayout from '../layouts/MainLayout';
+import Input from '../components/Input';
+import Button from '../components/Button';
 const HomePage = () => {
     return (
         <MainLayout>
             <img className='banner' src='/static/images/bg_banner.png' />
             <div className='search-container'>
                 <div className='search'>
-                    <div className='search-box'>
-                        <i className="fa fa-search icon"></i>
-                        <input className='search-input' type='text' placeholder='Find Something' />
-                    </div>
-                    <div className='search-button'>
-                        <button>Search</button>
-                    </div>
+                    <Input icon='search' type='text' placeholder='Find somthing'/>
+                    <Button>Search</Button>
                 </div>
                 <div className='ads-container'>
                     <div className='ads-block'>
@@ -55,30 +52,6 @@ const HomePage = () => {
                 }
                 .icon {
                     margin-right: 5px;
-                }
-                .search-box {
-                    display: flex;
-                    align-items: center;
-                    background-color: white;
-                    padding: 4px;
-                    border-radius: 8px;
-                    margin-right: 6px;
-                }
-                .search-input {
-                    margin: 0;
-                    padding: 0;
-                    font-size: 1em;
-                    border: none;
-                    font-weight: 300;
-                }
-                .search-button button {
-                    font-size: 1em;
-                    border: none;
-                    border-radius: 8px;
-                    padding: 4px 12px;
-                    margin: 0;
-                    background-color: #00BBD3;
-                    color: white;
                 }
                 .content {
                     height: 500px;
