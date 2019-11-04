@@ -36,6 +36,11 @@ const MainLayout = props => {
                     src: url(/static/fonts/Roboto-Regular.ttf);
                     font-weight: 400;
                 }
+                @font-face {
+                    font-family: Roboto;
+                    src: url(/static/fonts/Roboto-Light.ttf);
+                    font-weight: 200;
+                }
                 body {
                     margin: 0;
                     font-family: 'Roboto';
@@ -59,6 +64,10 @@ const MainLayout = props => {
                 .link {
                     text-decoration: none;
                     color: black;
+                }
+                .content {
+                    display: flex;
+                    flex-direction: column;
                 }
             `}</style>
         </div>
