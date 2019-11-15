@@ -17,12 +17,12 @@ const initProducts = [
 ];
 
 let i = 0;
-let selectedProduct = {};
 
 const ProductsPage = () => {
 
     const [products, setProducts] = useState(initProducts);
     const [visible, setVisible] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState({});
 
     const handleCreateProduct = (data) => {
         const newProduct = { id: i++, ...data };
@@ -40,7 +40,7 @@ const ProductsPage = () => {
         // };
 
         // setProducts([...products])
-        selectedProduct = data;
+        setSelectedProduct({ ...data });
         setVisible(true);
     }
 
@@ -61,21 +61,23 @@ const ProductsPage = () => {
                     <div className='product-list'>
                         {
                             products.map((product, index) => (
-                                <Product
-                                    key={index}
-                                    data={product}
-                                    onUpdate={handleUpdateProduct}
-                                    onDelete={handleDeleteProduct}
-                                />
+                                <div>
+                                    <Product
+                                        key={index}
+                                        data={product}
+                                        onUpdate={handleUpdateProduct}
+                                        onDelete={handleDeleteProduct}
+                                    />
+                                    <UpdateProductModal
+                                        visible={visible}
+                                        onCancel={() => setVisible(false)}
+                                        data={product}
+                                    />
+                                </div>
                             ))
                         }
                     </div>
                 </section>
-                <UpdateProductModal
-                    visible={visible}
-                    onCancel={() => setVisible(false)}
-                    data={selectedProduct}
-                />
             </div>
             <style jsx>{`
                 .container {
