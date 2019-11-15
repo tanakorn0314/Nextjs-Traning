@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import globalStyle from '../style';
+import globalStyle from '../styles/globalStyle';
 
 const MainLayout = props => {
     return (
