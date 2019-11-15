@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import AddProductForm from '../components/AddProductForm';
 import Product from '../components/Product';
+import { Modal } from 'antd';
+import UpdateProductModal from '../components/UpdateProductModal';
 
 const initProducts = [
     {
@@ -12,32 +14,39 @@ const initProducts = [
         quantity: 20,
         imageUrl: 'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg'
     }
-]
+];
+
+let i = 0;
+let selectedProduct = {};
 
 const ProductsPage = () => {
 
     const [products, setProducts] = useState(initProducts);
+    const [visible, setVisible] = useState(false);
 
     const handleCreateProduct = (data) => {
-        const newProduct = { id: products.length, ...data }
+        const newProduct = { id: i++, ...data };
         setProducts([...products, newProduct]);
     }
 
     const handleUpdateProduct = (id, data) => {
-        products[id] = {
-            id: id,
-            name: 'pen',
-            description: 'writing',
-            price: 10,
-            quantity: 20,
-            imageUrl: 'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg'
-        };
+        // products[id] = {
+        //     id: id,
+        //     name: 'pen',
+        //     description: 'writing',
+        //     price: 10,
+        //     quantity: 20,
+        //     imageUrl: 'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg'
+        // };
 
-        setProducts([...products])
+        // setProducts([...products])
+        selectedProduct = data;
+        setVisible(true);
     }
 
-    const handleDeleteProduct = () => {
-
+    const handleDeleteProduct = (id) => {
+        const filteredProducts = products.filter((product) => product.id !== id);
+        setProducts([...filteredProducts]);
     }
 
     return (
@@ -62,6 +71,11 @@ const ProductsPage = () => {
                         }
                     </div>
                 </section>
+                <UpdateProductModal
+                    visible={visible}
+                    onCancel={() => setVisible(false)}
+                    data={selectedProduct}
+                />
             </div>
             <style jsx>{`
                 .container {

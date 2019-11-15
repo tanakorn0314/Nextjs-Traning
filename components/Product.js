@@ -9,7 +9,7 @@ const Product = props => {
     }
 
     const handleDelete = e => {
-
+        props.onDelete && props.onDelete(id);
     }
 
 
