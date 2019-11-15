@@ -2,7 +2,16 @@ import React from 'react';
 
 const Product = props => {
 
-    const { name, description, price, quantity, imageUrl } = props.data;
+    const { id, name, description, price, quantity, imageUrl } = props.data;
+
+    const handleUpdate = e => {
+        props.onUpdate && props.onUpdate(id, props.data);
+    }
+
+    const handleDelete = e => {
+
+    }
+
 
     return (
         <div className='container'>
@@ -15,8 +24,8 @@ const Product = props => {
             </div>
             <hr />
             <div className='action'>
-                <small className='update'>Update</small>
-                <small className='delete'>Delete</small>
+                <small className='update' onClick={handleUpdate}>Update</small>
+                <small className='delete' onClick={handleDelete}>Delete</small>
             </div>
             <style jsx>{`
                 .container {

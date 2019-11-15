@@ -5,6 +5,7 @@ import Product from '../components/Product';
 
 const initProducts = [
     {
+        id: 0,
         name: 'pen',
         description: 'writing',
         price: 10,
@@ -18,7 +19,25 @@ const ProductsPage = () => {
     const [products, setProducts] = useState(initProducts);
 
     const handleCreateProduct = (data) => {
-        setProducts([...products, data]);
+        const newProduct = { id: products.length, ...data }
+        setProducts([...products, newProduct]);
+    }
+
+    const handleUpdateProduct = (id, data) => {
+        products[id] = {
+            id: id,
+            name: 'pen',
+            description: 'writing',
+            price: 10,
+            quantity: 20,
+            imageUrl: 'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg'
+        };
+
+        setProducts([...products])
+    }
+
+    const handleDeleteProduct = () => {
+
     }
 
     return (
@@ -33,7 +52,12 @@ const ProductsPage = () => {
                     <div className='product-list'>
                         {
                             products.map((product, index) => (
-                                <Product key={index} data={product} />
+                                <Product
+                                    key={index}
+                                    data={product}
+                                    onUpdate={handleUpdateProduct}
+                                    onDelete={handleDeleteProduct}
+                                />
                             ))
                         }
                     </div>
